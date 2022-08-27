@@ -1,0 +1,43 @@
+.Main {
+    display: flex;
+    padding: 40px;
+    font-size: 20px;
+}
+
+.Main-Menu {
+    margin-right: 20px;
+    width: 20%;
+}
+
+.Main-Menu input {
+    margin-right: 5px;
+}
+
+.Main-Table {
+    border: 1px solid #eee;
+    table-layout: fixed;
+    flex-grow: 2;
+}
+
+.Main-Table th {
+    font-weight: bold;
+    padding: 5px;
+    background-color: #efefef;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.Main-Table td {
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    text-align: left;
+    width: 25%;
+}
+
+.Main-Table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.Main-Table tbody tr:nth-child(even) {
+    background-color: #F7F7F7;
+}
