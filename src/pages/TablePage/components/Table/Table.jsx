@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./Table.scss";
 
 const ROLES = {
@@ -22,7 +23,7 @@ const selectEmployees = (state) => {
 };
 
 const Table = () => {
-  const employees = useSelector((state) => selectEmployees(state));
+  const employees = useSelector(selectEmployees);
 
   return (
     <table className="Table">
@@ -35,7 +36,7 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {employees.map((employee, id) => {
+        {employees.map((employee) => {
           return (
             <tr key={employee.id}>
               <td>{employee.name}</td>

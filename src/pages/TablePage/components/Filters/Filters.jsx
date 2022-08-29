@@ -1,15 +1,15 @@
 import React from "react";
 import { ArchiveFilter } from "./ArchiveFilter";
-import "./Filter.scss";
 import { RoleFilter } from "./RoleFilter";
+import "./Filters.scss";
 
-const Filter = () => {
+const Filters = () => {
   return (
-    <div className="Filter">
+    <div className="Filters">
       <ArchiveFilter />
       <RoleFilter />
     </div>
   );
 };
 
-export { Filter };
+export { Filters };
