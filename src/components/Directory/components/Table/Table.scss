@@ -1,0 +1,29 @@
+.Table {
+    border: 1px solid #eee;
+    table-layout: fixed;
+    flex-grow: 2;
+
+
+    th {
+        font-weight: bold;
+        padding: 5px;
+        background-color: #efefef;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    td {
+        padding: 5px 10px;
+        border: 1px solid #eee;
+        text-align: left;
+        width: 25%;
+    }
+}
+
+.Table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.Table tbody tr:nth-child(even) {
+    background-color: #F7F7F7;
+}
