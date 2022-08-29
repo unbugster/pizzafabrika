@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Table } from "./components/Table";
+import { Directory } from "./components/Directory";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Table />}></Route>
+      <Route path="/" element={<Directory />}></Route>
     </Routes>
   );
 };

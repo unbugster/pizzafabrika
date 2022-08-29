@@ -5,6 +5,7 @@ const initialState = {
   employees,
   filters: {
     showArchive: false,
+    roleFilter: "all",
   },
 };
 
@@ -14,7 +15,16 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         filters: {
+          ...state.filters,
           showArchive: !state.filters.showArchive,
+        },
+      };
+    case "FILTERS/CHANGE_ROLE":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          roleFilter: payload,
         },
       };
   }
