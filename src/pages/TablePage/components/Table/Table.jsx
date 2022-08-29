@@ -39,7 +39,9 @@ const Table = () => {
         {employees.map((employee) => {
           return (
             <tr key={employee.id}>
-              <td>{employee.name}</td>
+              <td>
+                <Link to={`/edit/${employee.id}`}>{employee.name}</Link>
+              </td>
               <td>{ROLES[employee.role]}</td>
               <td>{employee.phone}</td>
               <td>{employee.birthday}</td>

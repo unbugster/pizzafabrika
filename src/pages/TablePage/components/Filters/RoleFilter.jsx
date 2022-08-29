@@ -11,7 +11,7 @@ const RoleFilter = () => {
 
   const onSelect = useCallback((event) => {
     const newRole = event.target.value;
-    dispatch({ type: "FILTERS/CHANGE_ROLE", payload: newRole });
+    dispatch({ type: "FILTERS/CHANGE_ROLE", payload: { newRole } });
   }, []);
 
   return (

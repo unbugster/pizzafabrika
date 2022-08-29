@@ -24,8 +24,21 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         filters: {
           ...state.filters,
-          roleFilter: payload,
+          roleFilter: payload.newRole,
         },
+      };
+    case "EMPLOYEES/EDIT":
+      const newEmployees = state.employees.map((employee) => {
+        if (employee.id === Number(payload.id)) {
+          return { ...employee, ...payload.newData };
+        }
+
+        return employee;
+      });
+
+      return {
+        ...state,
+        employees: newEmployees,
       };
   }
 
