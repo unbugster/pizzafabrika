@@ -1,12 +1,12 @@
 import React from "react";
-import { Filters } from "./components/Filters";
-import { Table } from "./components/Table";
+import { Table } from "../../components/Table";
+import { TableControls } from "../../components/TableControls";
 import "./TablePage.scss";
 
 const TablePage = () => {
   return (
     <div className="TablePage">
-      <Filters />
+      <TableControls />
       <Table />
     </div>
   );
