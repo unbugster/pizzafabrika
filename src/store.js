@@ -40,6 +40,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         employees: newEmployees,
       };
+    case "EMPLOYEES/ADD":
+      const newEmployess = [...state.employees, payload.newData];
+      return {
+        ...state,
+        employees: newEmployess,
+      };
   }
 
   return state;

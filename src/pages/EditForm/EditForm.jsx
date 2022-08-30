@@ -1,56 +1,80 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { customAlphabet } from "nanoid";
 import "./EditForm.scss";
 
+const nanoid = customAlphabet("1234567890", 5);
+
 const selectEmployeeById = (state, id) => {
+  if (!id) {
+    return {
+      id: Number(nanoid()),
+      name: "",
+      phone: "",
+      role: "",
+      birthday: "",
+      isArchive: false,
+    };
+  }
+
   return state.employees.find((employee) => employee.id === Number(id));
 };
 
-const EditForm = () => {
+const EditForm = ({ formType }) => {
   const { id } = useParams();
-  const employee = useSelector((state) => selectEmployeeById(state, id));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const initialData = useSelector((state) => selectEmployeeById(state, id));
+
+  const [employee, setEmployee] = useState({
+    id: initialData.id,
+    name: initialData.name,
+    phone: initialData.phone,
+    role: initialData.role,
+    birthday: initialData.birthday,
+    isArchive: initialData.isArchive,
+  });
 
   const goBack = () => navigate(-1);
 
-  const [person, setPerson] = useState({
-    name: employee.name,
-    phone: employee.phone,
-    role: employee.role,
-    birthday: employee.birthday,
-    isArchive: employee.isArchive,
-  });
-
   const handleNameChange = useCallback((evt) => {
     const newName = evt.target.value;
-    setPerson({ ...person, name: newName });
+    setEmployee((currentEmployee) => ({ ...currentEmployee, name: newName }));
   }, []);
 
   const handlePhoneChange = useCallback((evt) => {
     const newPhone = evt.target.value;
-    setPerson({ ...person, phone: newPhone });
+    setEmployee((currentEmployee) => ({ ...currentEmployee, phone: newPhone }));
   }, []);
 
   const handleRoleChange = useCallback((evt) => {
     const newRole = evt.target.value;
-    setPerson({ ...person, role: newRole });
+    setEmployee((currentEmployee) => ({ ...currentEmployee, role: newRole }));
   }, []);
 
   const handleBirthdayChange = useCallback((evt) => {
     const newBirthday = evt.target.value;
-    setPerson({ ...person, birthday: newBirthday });
+    setEmployee((currentEmployee) => ({
+      ...currentEmployee,
+      birthday: newBirthday,
+    }));
   }, []);
 
   const handleCheckboxChange = useCallback((_evt) => {
-    setPerson({ ...person, isArchive: !person.isArchive });
+    setEmployee((currentEmployee) => ({
+      ...currentEmployee,
+      isArchive: !currentEmployee.isArchive,
+    }));
   }, []);
 
   const handleSaveChanges = useCallback(() => {
-    dispatch({ type: "EMPLOYEES/EDIT", payload: { newData: person, id } });
+    formType === "edit"
+      ? dispatch({ type: "EMPLOYEES/EDIT", payload: { newData: employee, id } })
+      : dispatch({ type: "EMPLOYEES/ADD", payload: { newData: employee } });
+
     goBack();
-  }, [person]);
+  }, [employee]);
 
   return (
     <div className="EditForm">
@@ -60,7 +84,7 @@ const EditForm = () => {
           <input
             type="text"
             name="name"
-            value={person.name}
+            value={employee.name}
             onChange={handleNameChange}
           />
         </label>
@@ -69,13 +93,13 @@ const EditForm = () => {
           <input
             type="text"
             name="phone"
-            value={person.phone}
+            value={employee.phone}
             onChange={handlePhoneChange}
           />
         </label>
         <label>
           Должность:
-          <select name="role" value={person.role} onChange={handleRoleChange}>
+          <select name="role" value={employee.role} onChange={handleRoleChange}>
             <option value="no-role">-------</option>
             <option value="driver">Водитель</option>
             <option value="waiter">Официант</option>
@@ -87,7 +111,7 @@ const EditForm = () => {
           <input
             type="text"
             name="birthday"
-            value={person.birthday}
+            value={employee.birthday}
             onChange={handleBirthdayChange}
           />
         </label>
@@ -95,7 +119,7 @@ const EditForm = () => {
           <input
             type="checkbox"
             name="archive"
-            checked={person.isArchive}
+            checked={employee.isArchive}
             onChange={handleCheckboxChange}
           />
           В архиве.
@@ -104,7 +128,7 @@ const EditForm = () => {
           Назад
         </button>
         <button type="button" onClick={handleSaveChanges}>
-          Сохранить
+          {formType === "add" ? "Добавить сотрудника" : "Сохранить"}
         </button>
       </form>
     </div>

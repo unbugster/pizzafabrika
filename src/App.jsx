@@ -7,7 +7,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<TablePage />}></Route>
-      <Route path="/edit/:id" element={<EditForm />}></Route>
+      <Route path="/edit/:id" element={<EditForm formType={"edit"} />}></Route>
+      <Route path="/new" element={<EditForm formType={"add"} />}></Route>
     </Routes>
   );
 };
