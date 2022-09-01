@@ -2,13 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 200px;
     font-size: 24px;
+    height: 100vh;
+    margin: auto;
 }
 
 .EditForm-Form {
-    display: flex;
-    flex-direction: column;
 
     input,
     select {
@@ -26,10 +25,35 @@
     select {
         width: 100%;
     }
+}
 
-    label {
-        margin-bottom: 15px;
+.EditForm-Inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.EditForm-Controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.EditForm-ErrorWrapper {
+    position: relative;
+
+    span {
+        color: red;
     }
+
+    .EditForm-ErrorWrapper_valid {
+        color: green;
+    }
+}
+
+.EditForm-SaveBtn {
+    width: 100%;
 }
 
 .EditForm-ArchiveCheckbox {
@@ -44,6 +68,9 @@
     }
 }
 
-.EditForm-BackBtn {
-    margin-bottom: 10px;
+.EditForm-ErrorMessage {
+    color: red;
+    position: absolute;
+    right: 0;
+    font-size: 16px;
 }
