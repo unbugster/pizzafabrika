@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import { useEditForm } from "./useEditForm";
+import InputMask from "react-input-mask";
 import "./EditForm.scss";
 
 const EditForm = ({ formType }) => {
@@ -44,7 +45,9 @@ const EditForm = ({ formType }) => {
                 *
               </span>
               Телефон:
-              <input
+              <InputMask
+                mask="+7 (999) 999 99-99"
+                maskChar="_"
                 name="phone"
                 {...phone.props}
                 placeholder="+7 (800) 550-0600"
@@ -73,7 +76,9 @@ const EditForm = ({ formType }) => {
                 *
               </span>
               Дата рождения:
-              <input
+              <InputMask
+                mask="99.99.9999"
+                maskChar="_"
                 type="text"
                 name="birthday"
                 placeholder="01.04.2011"
