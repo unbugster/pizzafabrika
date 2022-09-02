@@ -1,42 +1,13 @@
-.EditForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    height: 100vh;
-    margin: auto;
-}
-
-.EditForm-Form {
-
-    input,
-    select {
-        display: block;
-        padding-right: 5px;
-        padding-left: 5px;
-        line-height: 1.5;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #ced4da;
-        border-radius: 5px;
-    }
+.EditForm-Inputs {
+    margin-bottom: 20px;
+    gap: 15px;
 
     select {
         width: 100%;
     }
 }
 
-.EditForm-Inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
 .EditForm-Controls {
-    display: flex;
-    flex-direction: column;
     gap: 15px;
 }
 
@@ -48,18 +19,12 @@
     }
 
     .EditForm-ErrorWrapper_valid {
-        color: green;
+        color: rgb(72, 199, 142);
+        ;
     }
 }
 
-.EditForm-SaveBtn {
-    width: 100%;
-}
-
 .EditForm-ArchiveCheckbox {
-    display: flex;
-    align-items: center;
-    line-height: 16px;
 
     input {
         width: 20px;
@@ -69,8 +34,9 @@
 }
 
 .EditForm-ErrorMessage {
-    color: red;
+    display: block;
+    font-size: 16px;
+    color: rgb(211, 0, 0);
     position: absolute;
     right: 0;
-    font-size: 16px;
 }

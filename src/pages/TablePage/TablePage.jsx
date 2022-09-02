@@ -5,9 +5,11 @@ import "./TablePage.scss";
 
 const TablePage = () => {
   return (
-    <div className="TablePage">
+    <div className="TablePage columns">
       <TableControls />
-      <Table />
+      <div className="TablePage-Table column">
+        <Table />
+      </div>
     </div>
   );
 };

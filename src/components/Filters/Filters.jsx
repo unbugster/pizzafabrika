@@ -5,7 +5,7 @@ import "./Filters.scss";
 
 const Filters = () => {
   return (
-    <div className="Filters">
+    <div className="is-flex is-flex-direction-column">
       <ArchiveFilter />
       <RoleFilter />
     </div>

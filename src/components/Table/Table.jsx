@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { SortIcon } from "./components/SortIcon";
 import "./Table.scss";
 
 const ROLES = {
@@ -89,34 +90,44 @@ const Table = () => {
   }, []);
 
   return (
-    <table className="Table">
-      <thead>
-        <tr>
-          <th scope="col" onClick={sortByName}>
-            ФИО
-          </th>
-          <th scope="col">Должность</th>
-          <th scope="col">Телефон</th>
-          <th scope="col" onClick={sortByBirthday}>
-            Дата рождения
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {sortedEmployees.map((employee) => {
-          return (
-            <tr key={employee.id}>
-              <td>
-                <Link to={`/edit/${employee.id}`}>{employee.name}</Link>
-              </td>
-              <td>{ROLES[employee.role]}</td>
-              <td>{employee.phone}</td>
-              <td>{employee.birthday}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <div className="Table">
+      <table className="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th className="is-clickable" scope="col" onClick={sortByName}>
+              <div className="is-flex">
+                ФИО
+                <SortIcon sorting={byName} />
+              </div>
+            </th>
+            <th scope="col">Должность</th>
+            <th scope="col">Телефон</th>
+            <th className="is-clickable" scope="col" onClick={sortByBirthday}>
+              <div className="is-flex">
+                Дата рождения
+                <SortIcon sorting={byBirthday} />
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedEmployees.map((employee) => {
+            return (
+              <tr key={employee.id}>
+                <td>
+                  <Link className="Table-NameLink" to={`/edit/${employee.id}`}>
+                    {employee.name}
+                  </Link>
+                </td>
+                <td>{ROLES[employee.role]}</td>
+                <td>{employee.phone}</td>
+                <td>{employee.birthday}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

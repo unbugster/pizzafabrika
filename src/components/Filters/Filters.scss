@@ -1,23 +1,23 @@
-.Filters {
-    display: flex;
-    flex-direction: column;
-}
-
 .ArchiveFilter {
     margin-bottom: 10px;
+    font-size: 20px;
     user-select: none;
     cursor: pointer;
 
     input {
+        width: 15px;
+        height: 15px;
         margin-right: 5px;
     }
 }
 
 .RoleFilter {
-    font-size: 16px;
-    height: 28px;
+    margin-bottom: 10px;
     background: transparent;
     user-select: none;
     cursor: pointer;
-    margin-bottom: 10px;
+}
+
+.RoleFilter-Select {
+    width: 100%
 }

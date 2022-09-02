@@ -14,7 +14,7 @@ const ArchiveFilter = () => {
   }, []);
 
   return (
-    <label className="ArchiveFilter">
+    <label className="ArchiveFilter checkbox">
       <input
         type="checkbox"
         checked={showArchive}

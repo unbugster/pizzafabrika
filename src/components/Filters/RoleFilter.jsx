@@ -15,12 +15,18 @@ const RoleFilter = () => {
   }, []);
 
   return (
-    <select className="RoleFilter" value={chosenRole} onChange={onSelect}>
-      <option value="all">Должность не выбрана</option>
-      <option value="driver">Водитель</option>
-      <option value="waiter">Официант</option>
-      <option value="cook">Повар</option>
-    </select>
+    <div className="select is-warning RoleFilter is-normal">
+      <select
+        className="RoleFilter-Select"
+        value={chosenRole}
+        onChange={onSelect}
+      >
+        <option value="all">Должность не выбрана</option>
+        <option value="driver">Водитель</option>
+        <option value="waiter">Официант</option>
+        <option value="cook">Повар</option>
+      </select>
+    </div>
   );
 };
 
